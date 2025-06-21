@@ -24,7 +24,7 @@ This is a simple Flask middleware module that restricts access to your Flask app
 Install dependencies with:
 
 ```bash
-pip install flask requests colorama
+pip install cloudflare-ip-filter
 ```
 
 ---
