@@ -30,10 +30,12 @@ def is_cloudflare_ip():
         print(Fore.RED + f"IP check error: {e}")
         return False
 
-def restrict_to_cloudflare():
+def restrict_to_cloudflare(Log):
     if is_cloudflare_ip():
         real_ip = request.headers.get("X-Forwarded-For", request.remote_addr).split(',')[0].strip()
-        print(Fore.GREEN + f"Allowed access. Real IP: {real_ip}")
+        if Log==True:
+            print(Fore.GREEN + f"Allowed access. Real IP: {real_ip}")
     else:
-        print(Fore.RED + f"Blocked IP access: {request.remote_addr}")
+        if Log==True:
+            print(Fore.RED + f"Blocked IP access: {request.remote_addr}")
         abort(403)
